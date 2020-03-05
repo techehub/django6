@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> This is my product page !!!</h1>
+
+<table border="1">
+    <tr>
+        <td>Product ID </td>
+        <td>{{id}}</td>
+    </tr>
+
+    <tr>
+        <td>Product Name </td>
+        <td>{{name}}</td>
+    </tr>
+
+    <tr>
+        <td>Description </td>
+        <td>{{desc}}</td>
+    </tr>
+
+    <tr>
+        <td>Price </td>
+        <td>{{price}}</td>
+    </tr>
+
+
+
+     <tr>
+        <td>Features </td>
+        <td>
+
+            {% if features %}
+             <ul>
+                    {% for x in  features %}
+
+                         <li>{{x}}</li>
+
+                     {% endfor %}
+            </ul>
+
+              {% else %}
+
+             NA
+
+            {% endif %}
+
+        </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+</table>
+
+</body>
+</html>
