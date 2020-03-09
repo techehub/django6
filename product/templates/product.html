@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'mysite.html'%}
+
+   {% block abc %}
+
 <h1> This is my product page !!!</h1>
 
 <table border="1">
@@ -27,7 +24,6 @@
         <td>Price </td>
         <td>{{price}}</td>
     </tr>
-
 
 
      <tr>
@@ -57,12 +53,7 @@
 
     </tr>
 
-
-
-
-
-
 </table>
 
-</body>
-</html>
+
+ {% endblock %}

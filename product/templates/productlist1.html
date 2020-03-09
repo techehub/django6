@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'mysite.html'%}
+
+   {% block abc %}
+
 
 {% for key, product in products.items %}
 
@@ -30,5 +27,7 @@
 
 {% endfor %}
 
-</body>
-</html>
+
+
+    {% endblock %}
+

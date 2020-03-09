@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .header {
+            background-color : yellow;
+        }
+        .main {
+            background-color : gray;
+        }
+        footer {
+            background-color : blue;
+        }
+        ul.mylinks {
+            list-style-type:none;
+        }
+        li.mylinks {
+            display : inline-block;
+            padding : 10px;
+        }
+        a{
+            text-decoration:none;
+        }
+        a:hover {
+            color : red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class = "header">
+    <ul class="mylinks">
+        <li  class="mylinks"> <a href="/home"> Home </a></li>
+        <li  class="mylinks"> <a href="/productlist"> Products</a></li>
+        <li  class="mylinks"> <a href=""> Contact Us</a></li>
+        <li  class="mylinks"> <a href=""> About Us</a></li>
+    </ul>
+</div>
+<div class = "main">
+    {% block abc %}
+    Main Section
+    {% endblock %}
+</div>
+<div class = "footer">Footer</div>
+</body>
+</html>
