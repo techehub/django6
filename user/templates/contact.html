@@ -5,7 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-Contact Page
+
+<form action="/savecontact">
+    <input type="text" name="fname" placeholder="First Name"
+           maxlength="50" minlength="3" required pattern="[A-Za-z]*">  <br>
+    <input type="text" name="lname" placeholder="Last Name"
+           maxlength="50" minlength="3" required> <br>
+    <input type="number" name="mobile" placeholder="Mobile Number" required><br>
+    <input type="email" name="emailId" placeholder="Email" required><br>
+    <input type="submit"><br>
+</form>
 
 </body>
 </html>
