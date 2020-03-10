@@ -6,50 +6,27 @@ from .models import Product
 # Create your views here.
 
 
-myproducts= {
-
-    "111" : {"id":"111",
-            "name": "samsung galexy s1",
-            "desc": "Andriod phone",
-            "price": 25000,
-            "features": ["Andriod Phone",
-                         "5 MP front camera",
-                         "30 MP rear cam",
-                         "5.5 Inch display"]
-           }
-    ,
-
-    "222": {"id": "222",
-            "name": "samsung galexy s2",
-            "desc": "Andriod phone",
-            "price": 25000,
-            "features": ["Andriod Phone",
-                         "5 MP front camera",
-                         "30 MP rear cam",
-                         "5.5 Inch display"]
-            }
-
-    ,
-
-    "333": {"id": "333",
-            "name": "samsung galexy s3",
-            "desc": "Andriod phone",
-            "price": 25000,
-            "features": ["Andriod Phone",
-                         "5 MP front camera",
-                         "30 MP rear cam",
-                         "5.5 Inch display"]
-            }
-
-}
-
 def displayProduct (req, pid):
     print ("########",pid)
+
     template = loader.get_template("product.html")
-    data =  myproducts[pid]
+    pdata=Product.objects.get(id=pid)
+    data =  { "id": pdata.id,
+              "name": pdata.name,
+              "desc": pdata.description,
+              "price": pdata.price}
 
     res = template.render(data, req)
-    return  HttpResponse(res)
+    httpResponse=  HttpResponse(res)
+
+    pids=""
+    ids= req.COOKIES.get("PIDS")
+    if ids!= None:
+        pids=ids
+    pids=pids + "|"+ pid
+
+    httpResponse.set_cookie("PIDS", pids)
+    return httpResponse;
 
 def displayProductList(req):
     template = loader.get_template("productlist.html")
