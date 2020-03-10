@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-
+from .models import Product
 
 # Create your views here.
 
@@ -52,10 +52,8 @@ def displayProduct (req, pid):
     return  HttpResponse(res)
 
 def displayProductList(req):
-    template = loader.get_template("productlist1.html")
-
-    data = { "products" :myproducts}
-
+    template = loader.get_template("productlist.html")
+    data = { "products" :Product.objects.all()}
     res = template.render(data, req)
     return HttpResponse(res)
 
