@@ -49,5 +49,32 @@ def addToCart (request):
     return HttpResponse("Added Item to Cart")
 
 
+def cart (request):
+     template = loader.get_template("cart.html")
+     if request.session.__contains__("cart"):
+         cartItems= request.session.__getitem__("cart")
+         items = []
+         netTotal=0
+         for k, v in cartItems.items():
+             product = Product.objects.get(id=int(k))
+             item= {}
+             item["id"]= k
+             item["name"]= product.name
+             item["price"]= product.price
+             itemtotal= product.price * int(v)
+             item["total"]= itemtotal
+             netTotal= netTotal+ itemtotal
+             items.append(item)
+
+         data= {
+            "items": items,
+             "net" :  netTotal
+         }
+
+     res = template.render(data, request)
+     return HttpResponse(res)
+
+
+
 
 
