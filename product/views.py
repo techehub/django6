@@ -35,3 +35,19 @@ def displayProductList(req):
     return HttpResponse(res)
 
 
+def addToCart (request):
+    pid = request.GET['pid']
+    qty = request.GET['qty']
+    cartItems = {}
+    if request.session.__contains__("cart"):
+        cartItems = request.session.__getitem__('cart')
+
+    cartItems[pid] = qty
+    #request.session['cart'] = cartItems
+    request.session.__setitem__("cart", cartItems)
+    print (cartItems)
+    return HttpResponse("Added Item to Cart")
+
+
+
+
